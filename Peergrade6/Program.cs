@@ -22,12 +22,14 @@ namespace Peergrade6
             // Preventing more than one instance of the app.
             if (mutex.WaitOne(TimeSpan.Zero, true)) {
                 try {
-                    Application.SetHighDpiMode(HighDpiMode.SystemAware);
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
+                    // Some user's custom settings, better not use them.
+                    //Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                    //Application.EnableVisualStyles();
+                    //Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new MainForm());
-                } catch {
+                } catch (Exception e) {
                     MessageBox.Show("Oh no, error occurred...");
+                    MessageBox.Show(e.Message);
                 }
                 finally {
                     mutex.ReleaseMutex();

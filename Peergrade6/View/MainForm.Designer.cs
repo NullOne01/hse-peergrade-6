@@ -1,4 +1,6 @@
 ﻿
+using Peergrade6.Utilities.UI;
+
 namespace Peergrade6
 {
     partial class MainForm
@@ -16,6 +18,7 @@ namespace Peergrade6
             if (disposing && (components != null)) {
                 components.Dispose();
             }
+            
             base.Dispose(disposing);
         }
 
@@ -26,6 +29,7 @@ namespace Peergrade6
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -33,21 +37,27 @@ namespace Peergrade6
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.fileStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.fileStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.fileStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.fileStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.optionsStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tabsStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugTimer = new System.Windows.Forms.Timer(this.components);
+            this.styleTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabsContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileStripMenuItem,
             this.editStripMenuItem,
@@ -67,8 +77,11 @@ namespace Peergrade6
             this.toolStripSeparator1,
             this.fileStripMenuItem3,
             this.fileStripMenuItem4,
+            this.fileStripMenuItem5,
             this.toolStripSeparator2,
-            this.fileStripMenuItem5});
+            this.fileStripMenuItem6,
+            this.toolStripSeparator3,
+            this.fileStripMenuItem7});
             this.fileStripMenuItem.Name = "fileStripMenuItem";
             this.fileStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileStripMenuItem.Text = "Файл";
@@ -80,13 +93,15 @@ namespace Peergrade6
             | System.Windows.Forms.Keys.N)));
             this.fileStripMenuItem1.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem1.Text = "Создать файл в новом окне";
+            this.fileStripMenuItem1.Click += new System.EventHandler(this.fileStripMenuItem1_Click);
             // 
             // fileStripMenuItem2
             // 
             this.fileStripMenuItem2.Name = "fileStripMenuItem2";
             this.fileStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.fileStripMenuItem2.Size = new System.Drawing.Size(307, 22);
-            this.fileStripMenuItem2.Text = "Создать файл";
+            this.fileStripMenuItem2.Text = "Создать файл в новой вкладке";
+            this.fileStripMenuItem2.Click += new System.EventHandler(this.fileStripMenuItem2_Click);
             // 
             // toolStripSeparator1
             // 
@@ -100,6 +115,7 @@ namespace Peergrade6
             | System.Windows.Forms.Keys.S)));
             this.fileStripMenuItem3.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem3.Text = "Сохранить файл";
+            this.fileStripMenuItem3.Click += new System.EventHandler(this.fileStripMenuItem3_Click);
             // 
             // fileStripMenuItem4
             // 
@@ -107,17 +123,39 @@ namespace Peergrade6
             this.fileStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.fileStripMenuItem4.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem4.Text = "Сохранить всё";
+            this.fileStripMenuItem4.Click += new System.EventHandler(this.fileStripMenuItem4_Click);
+            // 
+            // fileStripMenuItem5
+            // 
+            this.fileStripMenuItem5.Name = "fileStripMenuItem5";
+            this.fileStripMenuItem5.Size = new System.Drawing.Size(307, 22);
+            this.fileStripMenuItem5.Text = "Сохранить как";
+            this.fileStripMenuItem5.Click += new System.EventHandler(this.fileStripMenuItem5_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(304, 6);
             // 
-            // fileStripMenuItem5
+            // fileStripMenuItem6
             // 
-            this.fileStripMenuItem5.Name = "fileStripMenuItem5";
-            this.fileStripMenuItem5.Size = new System.Drawing.Size(307, 22);
-            this.fileStripMenuItem5.Text = "Закрыть всё";
+            this.fileStripMenuItem6.Name = "fileStripMenuItem6";
+            this.fileStripMenuItem6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.fileStripMenuItem6.Size = new System.Drawing.Size(307, 22);
+            this.fileStripMenuItem6.Text = "Открыть в новой вкладке";
+            this.fileStripMenuItem6.Click += new System.EventHandler(this.fileStripMenuItem6_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
+            // 
+            // fileStripMenuItem7
+            // 
+            this.fileStripMenuItem7.Name = "fileStripMenuItem7";
+            this.fileStripMenuItem7.Size = new System.Drawing.Size(307, 22);
+            this.fileStripMenuItem7.Text = "Закрыть всё";
+            this.fileStripMenuItem7.Click += new System.EventHandler(this.fileStripMenuItem7_Click);
             // 
             // editStripMenuItem
             // 
@@ -133,62 +171,72 @@ namespace Peergrade6
             // 
             // optionsStripMenuItem
             // 
+            this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsStripMenuItem1});
             this.optionsStripMenuItem.Name = "optionsStripMenuItem";
             this.optionsStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.optionsStripMenuItem.Text = "Настройки";
             // 
-            // richTextBox1
+            // optionsStripMenuItem1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 92);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(860, 430);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.optionsStripMenuItem1.Name = "optionsStripMenuItem1";
+            this.optionsStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.optionsStripMenuItem1.Text = "Поменять тему";
+            this.optionsStripMenuItem1.Click += new System.EventHandler(this.optionsStripMenuItem1_Click);
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 80);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(200, 100);
-            this.tabControl1.TabIndex = 2;
+            this.tabControl.ContextMenuStrip = this.tabsContextMenuStrip;
+            this.tabControl.Location = new System.Drawing.Point(12, 59);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(860, 463);
+            this.tabControl.TabIndex = 2;
             // 
-            // tabPage1
+            // tabsContextMenuStrip
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(192, 72);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabsContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tabsStripMenuItem1});
+            this.tabsContextMenuStrip.Name = "tabsContextMenuStrip";
+            this.tabsContextMenuStrip.Size = new System.Drawing.Size(167, 26);
+            this.tabsContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.tabsContextMenuStrip_Opening);
             // 
-            // tabPage2
+            // tabsStripMenuItem1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 72);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabsStripMenuItem1.Name = "tabsStripMenuItem1";
+            this.tabsStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.tabsStripMenuItem1.Text = "Закрыть вкладку";
+            this.tabsStripMenuItem1.Click += new System.EventHandler(this.tabsStripMenuItem1_Click);
+            // 
+            // debugTimer
+            // 
+            this.debugTimer.Enabled = true;
+            this.debugTimer.Interval = 1000;
+            this.debugTimer.Tick += new System.EventHandler(this.debugTimer_Tick);
+            // 
+            // styleTimer
+            // 
+            this.styleTimer.Enabled = true;
+            this.styleTimer.Tick += new System.EventHandler(this.styleTimer_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(884, 534);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.menuStrip;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabsContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,16 +250,21 @@ namespace Peergrade6
         private System.Windows.Forms.ToolStripMenuItem formatStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem7;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.Timer debugTimer;
+        private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem1;
+        private System.Windows.Forms.Timer styleTimer;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem5;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ContextMenuStrip tabsContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem tabsStripMenuItem1;
     }
 }
 

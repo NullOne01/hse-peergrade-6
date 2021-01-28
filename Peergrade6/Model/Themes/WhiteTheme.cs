@@ -8,8 +8,8 @@ namespace Peergrade6.Model.Themes
 {
     class WhiteTheme : BaseTheme
     {
-        public override Color BackgroundColor { get; set; } = Color.Gray;
-        public override Color ForegroundColor { get; set; } = Color.White;
-        public override Color AssistColor { get; set; } = Color.Black;
+        public override Color BackgroundColor { get; set; } = Color.White;
+        public override Color ForegroundColor { get; set; } = Color.Black;
+        public override Color AssistColor { get; set; } = Color.DarkOrange;
     }
 }
