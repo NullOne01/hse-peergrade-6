@@ -44,13 +44,15 @@ namespace Peergrade6
             this.fileStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defFontlStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsThemeStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsSaveStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabsStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.debugTimer = new System.Windows.Forms.Timer(this.components);
             this.styleTimer = new System.Windows.Forms.Timer(this.components);
+            this.autoSaveTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.tabsContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +95,7 @@ namespace Peergrade6
             | System.Windows.Forms.Keys.N)));
             this.fileStripMenuItem1.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem1.Text = "Создать файл в новом окне";
-            this.fileStripMenuItem1.Click += new System.EventHandler(this.fileStripMenuItem1_Click);
+            this.fileStripMenuItem1.Click += new System.EventHandler(this.fileNewWindowStripMenuItem_Click);
             // 
             // fileStripMenuItem2
             // 
@@ -101,7 +103,7 @@ namespace Peergrade6
             this.fileStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.fileStripMenuItem2.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem2.Text = "Создать файл в новой вкладке";
-            this.fileStripMenuItem2.Click += new System.EventHandler(this.fileStripMenuItem2_Click);
+            this.fileStripMenuItem2.Click += new System.EventHandler(this.fileNewTabStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -115,7 +117,7 @@ namespace Peergrade6
             | System.Windows.Forms.Keys.S)));
             this.fileStripMenuItem3.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem3.Text = "Сохранить файл";
-            this.fileStripMenuItem3.Click += new System.EventHandler(this.fileStripMenuItem3_Click);
+            this.fileStripMenuItem3.Click += new System.EventHandler(this.fileSaveStripMenuItem_Click);
             // 
             // fileStripMenuItem4
             // 
@@ -123,14 +125,14 @@ namespace Peergrade6
             this.fileStripMenuItem4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.fileStripMenuItem4.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem4.Text = "Сохранить всё";
-            this.fileStripMenuItem4.Click += new System.EventHandler(this.fileStripMenuItem4_Click);
+            this.fileStripMenuItem4.Click += new System.EventHandler(this.fileSaveAllStripMenuItem_Click);
             // 
             // fileStripMenuItem5
             // 
             this.fileStripMenuItem5.Name = "fileStripMenuItem5";
             this.fileStripMenuItem5.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem5.Text = "Сохранить как";
-            this.fileStripMenuItem5.Click += new System.EventHandler(this.fileStripMenuItem5_Click);
+            this.fileStripMenuItem5.Click += new System.EventHandler(this.fileSaveAsStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -143,7 +145,7 @@ namespace Peergrade6
             this.fileStripMenuItem6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.fileStripMenuItem6.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem6.Text = "Открыть в новой вкладке";
-            this.fileStripMenuItem6.Click += new System.EventHandler(this.fileStripMenuItem6_Click);
+            this.fileStripMenuItem6.Click += new System.EventHandler(this.fileOpenStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -153,9 +155,10 @@ namespace Peergrade6
             // fileStripMenuItem7
             // 
             this.fileStripMenuItem7.Name = "fileStripMenuItem7";
+            this.fileStripMenuItem7.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.fileStripMenuItem7.Size = new System.Drawing.Size(307, 22);
             this.fileStripMenuItem7.Text = "Закрыть всё";
-            this.fileStripMenuItem7.Click += new System.EventHandler(this.fileStripMenuItem7_Click);
+            this.fileStripMenuItem7.Click += new System.EventHandler(this.fileCloseAllStripMenuItem_Click);
             // 
             // editStripMenuItem
             // 
@@ -165,24 +168,41 @@ namespace Peergrade6
             // 
             // formatStripMenuItem
             // 
+            this.formatStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defFontlStripMenuItem});
             this.formatStripMenuItem.Name = "formatStripMenuItem";
             this.formatStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.formatStripMenuItem.Text = "Формат";
             // 
+            // defFontlStripMenuItem
+            // 
+            this.defFontlStripMenuItem.Name = "defFontlStripMenuItem";
+            this.defFontlStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.defFontlStripMenuItem.Text = "Поменять везде шрифт";
+            this.defFontlStripMenuItem.Click += new System.EventHandler(this.defaultFontStripMenuItem_Click);
+            // 
             // optionsStripMenuItem
             // 
             this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsStripMenuItem1});
+            this.optionsThemeStripMenuItem,
+            this.optionsSaveStripMenuItem});
             this.optionsStripMenuItem.Name = "optionsStripMenuItem";
             this.optionsStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.optionsStripMenuItem.Text = "Настройки";
             // 
-            // optionsStripMenuItem1
+            // optionsThemeStripMenuItem
             // 
-            this.optionsStripMenuItem1.Name = "optionsStripMenuItem1";
-            this.optionsStripMenuItem1.Size = new System.Drawing.Size(158, 22);
-            this.optionsStripMenuItem1.Text = "Поменять тему";
-            this.optionsStripMenuItem1.Click += new System.EventHandler(this.optionsStripMenuItem1_Click);
+            this.optionsThemeStripMenuItem.Name = "optionsThemeStripMenuItem";
+            this.optionsThemeStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.optionsThemeStripMenuItem.Text = "Поменять тему";
+            this.optionsThemeStripMenuItem.Click += new System.EventHandler(this.optionsThemeStripMenuItem_Click);
+            // 
+            // optionsSaveStripMenuItem
+            // 
+            this.optionsSaveStripMenuItem.Name = "optionsSaveStripMenuItem";
+            this.optionsSaveStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.optionsSaveStripMenuItem.Text = "Частота сохранения";
+            this.optionsSaveStripMenuItem.Click += new System.EventHandler(this.optionsSaveStripMenuItem_Click);
             // 
             // tabControl
             // 
@@ -208,16 +228,16 @@ namespace Peergrade6
             this.tabsStripMenuItem1.Text = "Закрыть вкладку";
             this.tabsStripMenuItem1.Click += new System.EventHandler(this.tabsStripMenuItem1_Click);
             // 
-            // debugTimer
-            // 
-            this.debugTimer.Enabled = true;
-            this.debugTimer.Interval = 1000;
-            this.debugTimer.Tick += new System.EventHandler(this.debugTimer_Tick);
-            // 
             // styleTimer
             // 
             this.styleTimer.Enabled = true;
             this.styleTimer.Tick += new System.EventHandler(this.styleTimer_Tick);
+            // 
+            // autoSaveTimer
+            // 
+            this.autoSaveTimer.Enabled = true;
+            this.autoSaveTimer.Interval = 1000;
+            this.autoSaveTimer.Tick += new System.EventHandler(this.autoSaveTimer_Tick);
             // 
             // MainForm
             // 
@@ -229,11 +249,13 @@ namespace Peergrade6
             this.Controls.Add(this.menuStrip);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.tabsContextMenuStrip.ResumeLayout(false);
@@ -257,14 +279,16 @@ namespace Peergrade6
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem7;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.Timer debugTimer;
-        private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem optionsThemeStripMenuItem;
         private System.Windows.Forms.Timer styleTimer;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem fileStripMenuItem6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ContextMenuStrip tabsContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem tabsStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem defFontlStripMenuItem;
+        private System.Windows.Forms.Timer autoSaveTimer;
+        private System.Windows.Forms.ToolStripMenuItem optionsSaveStripMenuItem;
     }
 }
 

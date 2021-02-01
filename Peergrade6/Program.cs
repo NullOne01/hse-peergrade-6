@@ -17,21 +17,20 @@ namespace Peergrade6
         /// </summary>
         [STAThread]
         static void Main() {
-            // I used MVVM system here.
+            // I tried to use MVVM system here. You can read about it to get idea how program works
+            // and why MainForm.cs is so huge.
+
+            // Also I've used this article to implement MVVM: 
+            // https://www.codeproject.com/Articles/364485/MVVM-Model-View-ViewModel-Patte
 
             // Preventing more than one instance of the app.
             if (mutex.WaitOne(TimeSpan.Zero, true)) {
                 try {
-                    // Some user's custom settings, better not use them.
-                    //Application.SetHighDpiMode(HighDpiMode.SystemAware);
-                    //Application.EnableVisualStyles();
-                    //Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new MainForm());
                 } catch (Exception e) {
                     MessageBox.Show("Oh no, error occurred...");
                     MessageBox.Show(e.Message);
-                }
-                finally {
+                } finally {
                     mutex.ReleaseMutex();
                 }
             } else {

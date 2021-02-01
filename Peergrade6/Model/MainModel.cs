@@ -20,7 +20,7 @@ namespace Peergrade6.Model
         }
 
         public MainModel() {
-
+            // We need to leave it clear.
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
